@@ -31,8 +31,20 @@ public class CustomCharacterController : MonoBehaviour
     {
         if (GameState.curState == GameState.States.Running)
         {
-            transform.DOMove(transform.position + transform.forward * Input.GetAxis("Vertical") * speed, Time.deltaTime);
+            transform.DOMove(transform.position + (transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * speed, Time.deltaTime);
 
+            if (Input.GetAxis("Vertical") > 0.5)
+            {
+                CameraManager.instance.setFov(80);
+            }
+            else if (Input.GetAxis("Vertical") < -0.5)
+            {
+                CameraManager.instance.setFov(40);
+            }
+            else
+            {
+                CameraManager.instance.setFov(60);
+            }
         }
     }
 
