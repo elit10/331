@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 686778645}
   - component: {fileID: 686778642}
   - component: {fileID: 686778644}
+  - component: {fileID: 686778646}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -231,10 +232,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d87661d1e8427408c458ec83a89608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1596869755397576837, guid: 44e9739cab7f8aa4189b5589ef660427, type: 3}
+  prefabs:
+  - {fileID: 1596869755397576837, guid: 44e9739cab7f8aa4189b5589ef660427, type: 3}
+  - {fileID: 1596869755397576837, guid: 1486a6fe26839604ca2b45b6278cd4fe, type: 3}
+  - {fileID: 1596869755397576837, guid: 73b6b8dcc765dc9409f5fc60ea5ee2b7, type: 3}
   Trash: {fileID: 0}
   chunkSize: 20
   playerTransform: {fileID: 0}
+  treshold: 0.9
 --- !u!114 &686778645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +253,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnDistance: 50
+  maxDept: 250
+--- !u!114 &686778646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686778641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4234f3b6084e4fb47ae4508152fefdc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: d4b4c40df4ef4aa4681f1c53e12ae021, type: 2}
+  playerTransform: {fileID: 0}
+  cg: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

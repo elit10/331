@@ -31,7 +31,11 @@ public class CustomCharacterController : MonoBehaviour
     {
         if (GameState.curState == GameState.States.Running)
         {
-            transform.DOMove(transform.position + (transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * speed, Time.deltaTime);
+            Vector3 moveTo = transform.position + (transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * speed;
+
+            moveTo.y = Mathf.Clamp(moveTo.y, -GameManager.instance.maxDept, 0);
+
+            transform.DOMove(moveTo, Time.deltaTime);
 
             Cursor.lockState = CursorLockMode.Locked;
 

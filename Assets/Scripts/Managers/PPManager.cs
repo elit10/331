@@ -20,16 +20,22 @@ public class PPManager : MonoBehaviour
 
     public PostProcessProfile profile;
     public Transform playerTransform;
+    public ColorGrading cg;
 
 	private void Start()
 	{
         playerTransform = CustomCharacterController.instance.transform;
+        cg = profile.GetSetting<ColorGrading>();
+    }
+
+	private void Update()
+	{
+		UpdateDept();
 	}
 
-
-	public void ChangeDept()
-    { 
-        
+	public void UpdateDept()
+    {
+        cg.postExposure.value = playerTransform.position.y / (GameManager.instance.maxDept/5);
     
     }
 

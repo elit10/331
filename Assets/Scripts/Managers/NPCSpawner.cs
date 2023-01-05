@@ -15,7 +15,7 @@ public class NPCSpawner : MonoBehaviour
 
     #endregion
 
-    public Object prefab;
+    public Object[] prefabs;
     public GameObject Trash;
 
     public int chunkSize = 50;
@@ -23,7 +23,11 @@ public class NPCSpawner : MonoBehaviour
 
     public Hashtable chunkTable = new Hashtable();
 
-    public IEnumerator CreateChunks()
+    [Header("Stats")]
+    [Range(0, 1)]
+    public float treshold;
+
+    public IEnumerator CreateChunks(Object source, float index)
     {
         Vector3 pos = playerTransform.position;
 
@@ -31,23 +35,26 @@ public class NPCSpawner : MonoBehaviour
         {
             for (int y = -chunkSize; y < chunkSize; y++)
             {
-                for (int z = -chunkSize; z < chunkSize; z++)
+                if (y < 0)
                 {
-                    Vector3 chunk = new Vector3(pos.x - chunkSize / 2 + x, pos.y - chunkSize / 2 + y, pos.z - chunkSize / 2 + z);
-                    if (!chunkTable.ContainsKey(chunk))
+                    for (int z = -chunkSize; z < chunkSize; z++)
                     {
-                        if (Perlin3D(chunk * 0.9f) > 0.75)
+                        Vector3 chunk = new Vector3(pos.x - chunkSize / 2 + x , pos.y - chunkSize / 2 + y, pos.z - chunkSize / 2 + z);
+                        if (!chunkTable.ContainsKey(chunk))
                         {
-                            GameObject obj = (GameObject)Instantiate(prefab, chunk, transform.rotation);
-                            print(Perlin3D(chunk * 0.9f));
-                            chunkTable.Add(chunk,obj);
+                            if (Perlin3D(chunk * 0.9f + new Vector3(index, index, index)) > treshold)
+                            {
+                                GameObject obj = (GameObject)Instantiate(source, chunk, transform.rotation);
+                                print(Perlin3D(chunk * 0.9f));
+                                chunkTable.Add(chunk, obj);
+                            }
                         }
                     }
                 }
             }
         }
         yield return new WaitForSeconds(0.5f);
-        StartCoroutine(CreateChunks());
+        StartCoroutine(CreateChunks(source,index));
     }
 
     public void removeFromMap(GameObject obj)
@@ -59,7 +66,10 @@ public class NPCSpawner : MonoBehaviour
 	private void Start()
 	{
         playerTransform = CustomCharacterController.instance.transform;
-        StartCoroutine(CreateChunks());
+        foreach (Object prefab in prefabs)
+        {
+            StartCoroutine(CreateChunks(prefab, Random.Range(-200, 200)));
+        }
     }
 
 

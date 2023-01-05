@@ -16,4 +16,5 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public float despawnDistance;
+    public int maxDept;
 }

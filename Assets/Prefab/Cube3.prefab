@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7174985871417744841}
   - component: {fileID: -3737763013836795459}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96d770f76438e624ea3295b960608421, type: 2}
+  - {fileID: 2100000, guid: f3f3fcf6d4b85904cb6b1416551c007c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,6 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cba40ea481cb5b4c8088bfb0521714e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carbs: 2
+  carbs: 0
   prothein: 0
-  fat: 0
+  fat: 2
