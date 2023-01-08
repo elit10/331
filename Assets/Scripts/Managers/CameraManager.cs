@@ -34,10 +34,11 @@ public class CameraManager : MonoBehaviour
 
 	private void Update()
 	{
-
-        Vector3 toRotate = new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), mouseDelta.z);
-
-        playerTransform.DORotate(playerTransform.rotation.eulerAngles + toRotate* rotationSpeed, Time.deltaTime);
+        if (GameState.curState == GameState.States.Running)
+        {
+            Vector3 toRotate = new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), mouseDelta.z);
+            playerTransform.DORotate(playerTransform.rotation.eulerAngles + toRotate * rotationSpeed, Time.deltaTime);
+        }
     }
 
 	public void setFov(float val)

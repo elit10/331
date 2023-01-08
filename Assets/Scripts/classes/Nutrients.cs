@@ -32,6 +32,17 @@ public class Nutrients : MonoBehaviour
 		return toReturn;
 	}
 
+	public static Nutrients Remove(Nutrients a, Nutrients b)
+	{
+		Nutrients toReturn = new Nutrients();
+
+		toReturn.carbs = a.carbs - b.carbs;
+		toReturn.protein = a.protein - b.protein;
+		toReturn.fat = a.fat - b.fat;
+
+		return toReturn;
+	}
+
 
 	public override string ToString()
 	{ 

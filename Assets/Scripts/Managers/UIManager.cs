@@ -14,9 +14,10 @@ public class UIManager : MonoBehaviour
 	#endregion
 
 	public Panel[] Panels;
+	public GameObject UI;
 
-
-
+	public EvolutionPanel evolutionPanel;
+	public ManagementPanel managementPanel;
 
 	public void OpenUpPanel(int index)
 	{

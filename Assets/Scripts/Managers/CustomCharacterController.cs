@@ -34,6 +34,7 @@ public class CustomCharacterController : MonoBehaviour
     {
         GameState.curState = GameState.States.Running;
         playerNutrients = GetComponent<Nutrients>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 	private void OnCollisionEnter(Collision collision)
@@ -51,6 +52,18 @@ public class CustomCharacterController : MonoBehaviour
 
 	private void Update()
     {
+        if (Input.GetButtonDown("Tab"))
+        {
+            GameObject UI = UIManager.instance.UI;
+
+            GameState.curState = UI.activeSelf ? GameState.States.Running : GameState.States.Stopped;
+            Cursor.visible = !UI.activeSelf;
+            Cursor.lockState = UI.activeSelf ? CursorLockMode.Locked : CursorLockMode.None;
+
+
+            UI.SetActive(!UI.activeSelf);
+        }
+
         if (GameState.curState == GameState.States.Running)
         {
             Vector3 moveTo = transform.position + (transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * speed;
@@ -59,7 +72,7 @@ public class CustomCharacterController : MonoBehaviour
 
             transform.DOMove(moveTo, Time.deltaTime);
 
-            Cursor.lockState = CursorLockMode.Locked;
+
 
             if (Input.GetAxis("Vertical") > 0.5)
             {
