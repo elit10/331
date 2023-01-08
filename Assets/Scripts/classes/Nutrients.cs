@@ -5,7 +5,7 @@ using UnityEngine;
 public class Nutrients : MonoBehaviour
 {
 	public int carbs;
-	public int prothein;
+	public int protein;
 	public int fat;
 
 	private void Start()
@@ -26,7 +26,7 @@ public class Nutrients : MonoBehaviour
 		Nutrients toReturn = new Nutrients();
 
 		toReturn.carbs = a.carbs + b.carbs;
-		toReturn.prothein = a.prothein + b.prothein;
+		toReturn.protein = a.protein + b.protein;
 		toReturn.fat = a.fat + b.fat;
 
 		return toReturn;
