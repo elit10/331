@@ -27,7 +27,13 @@ public class CustomCharacterController : MonoBehaviour
         GameState.curState = GameState.States.Running;
     }
 
-    private void Update()
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision == null) { return; }
+	}
+
+
+	private void Update()
     {
         if (GameState.curState == GameState.States.Running)
         {
