@@ -31,4 +31,11 @@ public class Nutrients : MonoBehaviour
 
 		return toReturn;
 	}
+
+
+	public override string ToString()
+	{ 
+		return carbs.ToString() + " " + protein.ToString() + " " + fat.ToString();
+	
+	}
 }

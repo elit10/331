@@ -45,7 +45,6 @@ public class NPCSpawner : MonoBehaviour
                             if (Perlin3D(chunk * 0.9f + new Vector3(index, index, index)) > treshold)
                             {
                                 GameObject obj = (GameObject)Instantiate(source, chunk, transform.rotation);
-                                print(Perlin3D(chunk * 0.9f));
                                 chunkTable.Add(chunk, obj);
                             }
                         }
