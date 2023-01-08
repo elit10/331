@@ -9,7 +9,6 @@ public class CustomCharacterController : MonoBehaviour
     #region Singleton
 
     public static CustomCharacterController instance;
-    public Nutrients playerNutrients;
 
     private void Awake()
     {
@@ -23,15 +22,51 @@ public class CustomCharacterController : MonoBehaviour
     public float speed;
 
 
+    private float _health;
+    public float health
+    { 
+        get
+		{
+            return _health;
+		}
+        set
+        { 
+            _health = value;
+            UIManager.instance.UpdateUI(_health);
+
+        }
+    
+    }
+
+    public float ATP = 100;
+
+
+    private Nutrients _playerNutrients;
+    public Nutrients playerNutrients
+    {
+        get 
+        {
+            return _playerNutrients;
+        }
+
+		set
+		{
+			print(value.ToString() + " şeklinde değişti");
+
+			_playerNutrients = value;
+            UIManager.instance.UpdateUI(value);
+        }
+    }
+
     public void AddNutrients(Nutrients added)
     {
-        print(playerNutrients.ToString());
         playerNutrients =  Nutrients.Add(playerNutrients, added);
     }
 
     //şimdilik
     private void Start()
     {
+        health = 100;
         GameState.curState = GameState.States.Running;
         playerNutrients = GetComponent<Nutrients>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -42,7 +77,6 @@ public class CustomCharacterController : MonoBehaviour
 		if (collision == null) { return; }
         if (collision.gameObject.GetComponent<Nutrients>() != null)
         {
-            print("removed");
             AddNutrients(collision.gameObject.GetComponent<Nutrients>());
             NPCSpawner.instance.removeFromMap(collision.gameObject);
         }

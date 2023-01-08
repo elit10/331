@@ -17,4 +17,5 @@ public class GameManager : MonoBehaviour
 
     public float despawnDistance;
     public int maxDept;
+    public Color BoughtColor;
 }

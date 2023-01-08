@@ -9,9 +9,9 @@ public class EvolutionPanel : Panel
     public Evolution[] evolutions;
 
 	public Text details;
+	public Image detailImage;
 
-
-
+	public Evolution chosenEvo;
 
 
 
@@ -20,32 +20,38 @@ public class EvolutionPanel : Panel
 		evolutions = GetComponentsInChildren<Evolution>();
 	}
 
-	public void BuyEvolution(string ID)
-	{
-		if (findEvolution(ID) != null)
+	public void BuyEvolution()
+	{;
+
+		if (chosenEvo != null)
 		{
-			if (findEvolution(ID).Buy(CustomCharacterController.instance.playerNutrients) == 0)
+			if (chosenEvo.Buy() == 0)
 			{
 				//satýn alýnabildiyse
+				print("alýndý");
 
 			}
-			if (findEvolution(ID).Buy(CustomCharacterController.instance.playerNutrients) == 1)
+			if (chosenEvo.Buy() == 1)
 			{
 				//zaten satýn alýnmýþ
+				print("zaten alýnmmýþ");
 
 			}
-			if (findEvolution(ID).Buy(CustomCharacterController.instance.playerNutrients) == 2)
+			if (chosenEvo.Buy() == 2)
 			{
 				//para yok
+				print("kaynak yok");
 
 			}
 
 		}
 	}
 
-	public void ShowDetails(string text)
+	public void ShowDetails(string text, Sprite sp , Evolution source)
 	{
 		details.text = text;
+		detailImage.sprite = sp;
+		chosenEvo = source;
 	}
 
 	public Evolution findEvolution(string ID)

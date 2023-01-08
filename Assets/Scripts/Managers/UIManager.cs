@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +20,13 @@ public class UIManager : MonoBehaviour
 	public EvolutionPanel evolutionPanel;
 	public ManagementPanel managementPanel;
 
+	public Text carbs;
+	public Text protein;
+	public Text fat;
+
+	public Image healthImage;
+	public Text health;
+
 	public void OpenUpPanel(int index)
 	{
 		for (int i = 0; i < Panels.Length; i++)
@@ -36,6 +44,20 @@ public class UIManager : MonoBehaviour
 	
 	}
 
+	public void UpdateUI(Nutrients val)
+	{
+		carbs.text = val.carbs.ToString();
+		protein.text = val.protein.ToString();
+		fat.text = val.fat.ToString();
 
+	}
 
+	public void UpdateUI(float val)
+	{
+		health.text = val.ToString();
+
+		float g = val * 2.55f;
+		healthImage.color = new Color(255 - g, g, 0);
+
+	}
 }

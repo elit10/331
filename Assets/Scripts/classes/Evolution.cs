@@ -1,19 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public abstract class Evolution : MonoBehaviour
 {
     public string ID;
-    public Nutrients value;
+    private Nutrients value;
+
+    public int carb;
+    public int protein;
+    public int fat;
+
+
     public bool isActive;
 
     public string details;
+    public Sprite sp;
     public EvolutionPanel ep;
 
 	public void Start()
 	{
         ep = UIManager.instance.evolutionPanel;
+
+        value = new Nutrients();
+
+        value.carbs = carb;
+        value.protein = protein;
+        value.fat = fat;
+
+		sp = transform.GetChild(1).GetComponent<Image>().sprite;
+
 	}
 
 	public bool isEnough(Nutrients val)
@@ -29,14 +47,16 @@ public abstract class Evolution : MonoBehaviour
         return toReturn;
     }
 
-    public int Buy(Nutrients source)
+    public int Buy()
     {
         if (isActive) { return 1; }
 
-        if (isEnough(source))
+        if (isEnough(CustomCharacterController.instance.playerNutrients))
         {
+            CustomCharacterController.instance.playerNutrients =  Nutrients.Remove(CustomCharacterController.instance.playerNutrients, value);
+            GetComponent<Image>().color = GameManager.instance.BoughtColor;
             isActive = true;
-            source =  Nutrients.Remove(source, value);
+            Effect();
             return 0;
         }
     
@@ -45,7 +65,7 @@ public abstract class Evolution : MonoBehaviour
 
     public void ShowDetails()
     {
-        ep.ShowDetails(details);
+        ep.ShowDetails(details,sp,this);
     }
 
     public abstract void Effect();
