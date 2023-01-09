@@ -22,6 +22,8 @@ public class PPManager : MonoBehaviour
     public Transform playerTransform;
     public ColorGrading cg;
 
+    public bool eyes;
+
 	private void Start()
 	{
         playerTransform = CustomCharacterController.instance.transform;
@@ -30,7 +32,15 @@ public class PPManager : MonoBehaviour
 
 	private void Update()
 	{
-		UpdateDept();
+        if (eyes)
+        {
+            if (cg.postExposure == 1) { return; }
+            cg.postExposure.value = 1;
+        }
+        else
+        {
+            UpdateDept();
+        }
 	}
 
 	public void UpdateDept()

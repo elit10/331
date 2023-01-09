@@ -30,7 +30,16 @@ public class CustomCharacterController : MonoBehaviour
             return _health;
 		}
         set
-        { 
+        {
+            if (value > 100)
+            {
+                return;
+            }
+            if (value < 0)
+            { 
+                //game over
+            }
+
             _health = value;
             UIManager.instance.UpdateUI(_health);
 
@@ -39,7 +48,6 @@ public class CustomCharacterController : MonoBehaviour
     }
 
     public float ATP = 100;
-
 
     private Nutrients _playerNutrients;
     public Nutrients playerNutrients
@@ -86,6 +94,7 @@ public class CustomCharacterController : MonoBehaviour
 
 	private void Update()
     {
+
         if (Input.GetButtonDown("Tab"))
         {
             GameObject UI = UIManager.instance.UI;
