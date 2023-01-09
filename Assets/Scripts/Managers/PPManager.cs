@@ -34,8 +34,8 @@ public class PPManager : MonoBehaviour
 	{
         if (eyes)
         {
-            if (cg.postExposure == 1) { return; }
-            cg.postExposure.value = 1;
+            if (cg.postExposure == 0.9f) { return; }
+            cg.postExposure.value = 0.9f;
         }
         else
         {

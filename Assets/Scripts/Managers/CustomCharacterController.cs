@@ -20,6 +20,7 @@ public class CustomCharacterController : MonoBehaviour
     [Header("Stats")]
     [Range(0,1)]
     public float speed;
+    private float startSpeed;
 
 
     private float _health;
@@ -49,6 +50,9 @@ public class CustomCharacterController : MonoBehaviour
 
     public float ATP = 100;
 
+    public int nutrientMultiplier;
+    public bool flagella;
+
     private Nutrients _playerNutrients;
     public Nutrients playerNutrients
     {
@@ -68,12 +72,13 @@ public class CustomCharacterController : MonoBehaviour
 
     public void AddNutrients(Nutrients added)
     {
-        playerNutrients =  Nutrients.Add(playerNutrients, added);
+        playerNutrients =  Nutrients.Add(playerNutrients, added, nutrientMultiplier);
     }
 
     //şimdilik
     private void Start()
     {
+        startSpeed = speed;
         health = 100;
         GameState.curState = GameState.States.Running;
         playerNutrients = GetComponent<Nutrients>();
@@ -94,6 +99,8 @@ public class CustomCharacterController : MonoBehaviour
 
 	private void Update()
     {
+
+
 
         if (Input.GetButtonDown("Tab"))
         {
@@ -129,6 +136,14 @@ public class CustomCharacterController : MonoBehaviour
             {
                 CameraManager.instance.setFov(60);
             }
+
+
+            if (flagella)
+            {
+                if (Input.GetButtonDown("Shift")) {speed = startSpeed * 2; print("speed up"); }
+                if (Input.GetButtonUp("Shift")) { speed = startSpeed; }
+            }
+
         }
     }
 

@@ -12,6 +12,8 @@ public abstract class Evolution : MonoBehaviour
     public int carb;
     public int protein;
     public int fat;
+    public Evolution requisite;
+    public Evolution exclusive;
 
 
     public bool isActive;
@@ -50,6 +52,10 @@ public abstract class Evolution : MonoBehaviour
     public int Buy()
     {
         if (isActive) { return 1; }
+
+        if (exclusive != null) { if (exclusive.isActive) { return 4; } }
+
+        if (requisite != null) { if (!requisite.isActive) { return 3; } }
 
         if (isEnough(CustomCharacterController.instance.playerNutrients))
         {

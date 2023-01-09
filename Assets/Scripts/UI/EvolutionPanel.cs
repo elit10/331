@@ -43,6 +43,18 @@ public class EvolutionPanel : Panel
 				print("kaynak yok");
 
 			}
+			if (chosenEvo.Buy() == 3)
+			{
+				//önceki evrim tamamlanmamýþ
+				print("önceki evrimi yap");
+
+			}
+			if (chosenEvo.Buy() == 4)
+			{
+				//bu yok kilitli
+				print("bu evrim kilitli");
+
+			}
 
 		}
 	}

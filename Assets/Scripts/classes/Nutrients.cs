@@ -21,13 +21,13 @@ public class Nutrients : MonoBehaviour
 		}
 	}
 
-	public static Nutrients Add(Nutrients a, Nutrients b)
+	public static Nutrients Add(Nutrients a, Nutrients b , int multiplier)
 	{
 		Nutrients toReturn = new Nutrients();
 
-		toReturn.carbs = a.carbs + b.carbs;
-		toReturn.protein = a.protein + b.protein;
-		toReturn.fat = a.fat + b.fat;
+		toReturn.carbs = (a.carbs + b.carbs) * multiplier;
+		toReturn.protein = (a.protein + b.protein) * multiplier;
+		toReturn.fat = (a.fat + b.fat) * multiplier;
 
 		return toReturn;
 	}
