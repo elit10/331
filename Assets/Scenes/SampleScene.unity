@@ -1608,6 +1608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdef87926899dd4ba753172ef099441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNotifying: 0
   noText: {fileID: 115100985}
   noObject: {fileID: 1641995157}
 --- !u!1 &699508354
@@ -2102,7 +2103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddc269a35d7f4ef8aa506a2573e2446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.15
   ATP: 100
   nutrientMultiplier: 1
   flagella: 0

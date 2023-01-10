@@ -19,14 +19,16 @@ public class EnemyAI : MonoBehaviour
 	{
 		//track the player if near
 
+		if (Vector3.Distance(CustomCharacterController.instance.transform.position, transform.position) > GameManager.instance.despawnDistance * 1.5f)
+		{
+			NPCSpawner.instance.removeFromMap(gameObject);
+		}
+
 		if (Vector3.Distance(transform.position, playerTransform.position) > 30)
 		{
 			return;
 		}
-		if (Vector3.Distance(CustomCharacterController.instance.transform.position, transform.position) > GameManager.instance.despawnDistance*1.5f)
-		{
-			NPCSpawner.instance.removeFromMap(gameObject);
-		}
+
 		if (Vector3.Distance(transform.position, playerTransform.position) <5)
 		{
 			CustomCharacterController.instance.health -= 5;
