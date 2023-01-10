@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
 
 	public void UpdateUI(float val)
 	{
-		health.text = val.ToString();
+		health.text = Mathf.Floor(val).ToString();
 
 		float g = val * 2.55f;
 		healthImage.color = new Color(255 - g, g, 0);

@@ -103,7 +103,10 @@ public class CustomCharacterController : MonoBehaviour
 	private void Update()
     {
 
-
+        if (PPManager.instance.eyes)
+        {
+            if (transform.position.y > -10) { health -= Time.deltaTime; }
+        }
 
         if (Input.GetButtonDown("Tab"))
         {

@@ -53,7 +53,6 @@ public class NPCSpawner : MonoBehaviour
             }
         }
 
-        // 0.75 þu an 0.5 ve 0.9 arasý dönecek
         if(source.name == "enemy")  { treshold = 0.9f + (playerTransform.position.y * 1.6f) / 1000; print(treshold); }
 
         yield return new WaitForSeconds(0.5f);

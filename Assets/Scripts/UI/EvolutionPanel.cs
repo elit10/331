@@ -30,11 +30,15 @@ public class EvolutionPanel : Panel
 				//satýn alýnabildiyse
 				print("alýndý");
 
+				Notification.instance.ShowNotification("Evolved!", 2);
+
 			}
 			if (chosenEvo.Buy() == 1)
 			{
 				//zaten satýn alýnmýþ
 				print("zaten alýnmmýþ");
+
+				Notification.instance.ShowNotification("Already bought", 2);
 
 			}
 			if (chosenEvo.Buy() == 2)
@@ -42,17 +46,23 @@ public class EvolutionPanel : Panel
 				//para yok
 				print("kaynak yok");
 
+				Notification.instance.ShowNotification("Not enough resources", 2);
+
 			}
 			if (chosenEvo.Buy() == 3)
 			{
 				//önceki evrim tamamlanmamýþ
 				print("önceki evrimi yap");
 
+				Notification.instance.ShowNotification("You need to do the previous evolution first!", 2);
+
 			}
 			if (chosenEvo.Buy() == 4)
 			{
 				//bu yok kilitli
 				print("bu evrim kilitli");
+
+				Notification.instance.ShowNotification("This evolution is locked", 2);
 
 			}
 

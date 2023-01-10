@@ -25,9 +25,9 @@ public class Nutrients : MonoBehaviour
 	{
 		Nutrients toReturn = new Nutrients();
 
-		toReturn.carbs = (a.carbs + b.carbs) * multiplier;
-		toReturn.protein = (a.protein + b.protein) * multiplier;
-		toReturn.fat = (a.fat + b.fat) * multiplier;
+		toReturn.carbs = a.carbs + b.carbs * multiplier;
+		toReturn.protein = a.protein + b.protein * multiplier;
+		toReturn.fat = a.fat + b.fat * multiplier;
 
 		return toReturn;
 	}

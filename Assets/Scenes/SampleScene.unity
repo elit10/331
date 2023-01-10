@@ -3900,7 +3900,8 @@ MonoBehaviour:
   isActive: 0
   details: Light sensitive spots on cells are benefical for survival. The long term
     effect of sunlight can damage the DNA of the cell and eventualy make it unable
-    to operate (the damage from sunlight and deep sea vision penalty is removed.)
+    to operate (You take damage from the sunlight and deep sea vision penalty is
+    removed.)
   sp: {fileID: 0}
   ep: {fileID: 0}
 --- !u!114 &1558214433
