@@ -8,6 +8,8 @@ public class Notification : MonoBehaviour
 	#region Singleton
 	public static Notification instance;
 
+	public bool isNotifying = false;
+
 	private void Awake()
 	{
 		if (instance == null) { instance = this; }
@@ -22,15 +24,17 @@ public class Notification : MonoBehaviour
 
 	public void ShowNotification(string toShow, float duration)
 	{
-		StartCoroutine(NotificationSpawn(toShow, duration));
+		if (!isNotifying) { StartCoroutine(NotificationSpawn(toShow, duration)); }
 	}
 
 	IEnumerator NotificationSpawn(string toShow, float duration)
 	{
+		isNotifying = true;
 		noObject.SetActive(true);
 		noText.text = toShow;
 		yield return new WaitForSeconds(duration);
 		noObject.SetActive(false);
+		isNotifying = false;
 	}
 
 }

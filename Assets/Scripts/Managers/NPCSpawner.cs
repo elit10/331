@@ -27,7 +27,7 @@ public class NPCSpawner : MonoBehaviour
     [Range(0, 1)]
     public float treshold;
 
-    public IEnumerator CreateChunks(Object source, float index)
+    public IEnumerator CreateChunks(Object source, float index,float treshold)
     {
         Vector3 pos = playerTransform.position;
 
@@ -52,8 +52,12 @@ public class NPCSpawner : MonoBehaviour
                 }
             }
         }
+
+        // 0.75 þu an 0.5 ve 0.9 arasý dönecek
+        if(source.name == "enemy")  { treshold = 0.9f + (playerTransform.position.y * 1.6f) / 1000; print(treshold); }
+
         yield return new WaitForSeconds(0.5f);
-        StartCoroutine(CreateChunks(source,index));
+        StartCoroutine(CreateChunks(source,index,treshold));
     }
 
     public void removeFromMap(GameObject obj)
@@ -67,7 +71,7 @@ public class NPCSpawner : MonoBehaviour
         playerTransform = CustomCharacterController.instance.transform;
         foreach (Object prefab in prefabs)
         {
-            StartCoroutine(CreateChunks(prefab, Random.Range(-200, 200)));
+            StartCoroutine(CreateChunks(prefab, Random.Range(-200, 200),treshold));
         }
     }
 

@@ -37,8 +37,11 @@ public class CustomCharacterController : MonoBehaviour
                 return;
             }
             if (value < 0)
-            { 
+            {
                 //game over
+                Notification.instance.ShowNotification("Game OVER", 3);
+
+                return;
             }
 
             _health = value;
